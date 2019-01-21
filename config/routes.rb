@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :products,   only: :index
   resources :line_items, only: :create
   resources :orders,     only: :index
+
+  resources :charges,    only: %i[new create]
 end
