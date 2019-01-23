@@ -1,4 +1,6 @@
 <%= form_tag charges_path do %>
+  <%= hidden_field_tag :amount, @amount * 100 %>
+
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -13,6 +15,6 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="<%= @amount.to_f * 100 %>"
+          data-amount="<%= @amount * 100 %>"
           data-locale="auto"></script>
 <% end %>
