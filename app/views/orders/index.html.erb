@@ -1,6 +1,7 @@
 <% @orders.each do |order| %>
   <%= order.id %>:
   <%= form_tag new_charge_path, method: :get do %>
+    <%= hidden_field_tag :order_id, order.id %>
     <%= label_tag :amount,'Amount' %>
     <%= text_field_tag :amount, order.total.to_f %>
     <%= submit_tag 'Pay' %>
