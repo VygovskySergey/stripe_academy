@@ -7,15 +7,10 @@ class ChargesController < ApplicationController
   end
 
   def create
-    customer = Stripe::Customer.create(
-      email:  params[:stripeEmail],
-      source: params[:stripeToken]
-    )
-
     charge = Stripe::Charge.create(
-      customer:    customer.id,
       amount:      params[:amount],
       description: 'Rails Stripe customer',
+      source:      params[:stripeToken],
       currency:    'usd'
     )
 

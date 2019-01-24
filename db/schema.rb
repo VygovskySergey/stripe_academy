@@ -12,20 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2019_01_23_172553) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "line_items", force: :cascade do |t|
-    t.bigint "product_id"
+    t.integer "product_id"
     t.integer "quantity", default: 0, null: false
     t.decimal "total", default: "0.0", null: false
-    t.bigint "order_id"
+    t.integer "order_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "state", default: "incomplete"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -44,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_01_23_172553) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
